@@ -44,6 +44,12 @@ the skill; this server does the sending, scheduling, and storing.
 | `video_request_voice_lines` | Requests paid voicing; waits for the owner's approval in the studio |
 | `video_queue_job` / `video_get_job_status` | Queues an unpaid pipeline step (including transcribe with a source, the beat map, the captions burn-in, reframe with a shape for layouts, and export with a preset such as a phone copy) and reads job or queue status (with the run order) |
 | `video_cancel_job` | Cancels one job Claude asked for (queued, running or waiting for approval); Caleb's jobs are refused by the studio |
+| `video_list_recordings` | Lists the videos in the studio's recordings folder and any save or check running |
+| `video_plan_recording_edit` | Works out a join, cuts and a sound shift without saving: new length, whether it can skip encoding, cuts that move to a keyframe |
+| `video_save_recording` | Saves the edit as a new file in the same folder; never changes a recording, and a name in use is refused |
+| `video_measure_recording_sync` | Measures from the lips how far the picture is behind the sound |
+| `video_get_recording_work` | Progress and result of a save or a check |
+| `video_cancel_recording_work` | Stops a save or check Claude asked for; Caleb's are refused by the studio |
 | `video_reorder_queue` | Sets the run order of Claude's own queued jobs, within the places they already hold, so Caleb's jobs keep theirs |
 | `video_list_outputs` / `video_get_review_comments` | Lists rendered files and the owner's timed review comments |
 

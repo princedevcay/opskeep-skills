@@ -355,6 +355,79 @@ export const videoGetReviewCommentsTool = tool(
   }
 );
 
+// ---------- recordings: long videos that are not projects, such as a service recorded in OBS ----------
+const recordingFile = z.string().min(1).max(200).describe("A file name from video_list_recordings, never a path");
+const workId = z.string().regex(/^rec_[0-9a-f]{16}$/).describe("Work id (from video_save_recording or video_measure_recording_sync)");
+const recordingEdit = {
+  files: z.array(recordingFile).min(1).max(20).describe("One or more recordings, in the order they should play. More than one are joined."),
+  cuts: z.array(z.object({ from: z.number().min(0), to: z.number().min(0) })).max(200).optional()
+    .describe("Stretches to remove, in seconds on the joined timeline (the second file starts where the first ends)"),
+  syncMs: z.number().int().min(-2000).max(2000).optional()
+    .describe("Moves the sound: positive plays it later (for a picture that lags the sound), negative earlier"),
+  mode: z.enum(["copy", "compress"]).optional()
+    .describe("copy (default): no encoding, same picture, fast, but a kept part can begin only at a keyframe. compress: exact to the frame and smaller, but slow"),
+};
+
+export const videoListRecordingsTool = tool(
+  "video_list_recordings",
+  "List recordings",
+  "The videos in the studio's recordings folder (Caleb's Movies folder), with length, size and picture details, plus any save or check running. " +
+    "These are not projects. Also says whether the automatic lip sync check is set up.",
+  {},
+  async () => {
+    const r = await studio("GET", "/api/recordings");
+    return { folder: r.folder, recordings: r.recordings, work: r.work, lipSync: r.lipSync };
+  }
+);
+
+export const videoPlanRecordingEditTool = tool(
+  "video_plan_recording_edit",
+  "Check a recording edit before saving",
+  "Works out what a join, cut or sync change would give, without saving anything: the new length, whether it can be saved without encoding and why not, " +
+    "and any cut that would land later because the video can only start at a keyframe.",
+  recordingEdit,
+  async (input) => (await studio("POST", "/api/recordings/plan", input)).plan
+);
+
+export const videoSaveRecordingTool = tool(
+  "video_save_recording",
+  "Save an edited recording as a new file",
+  "Joins recordings, removes parts and moves the sound, then saves a NEW file in the same folder. It never changes or removes a recording, and a name already in the folder is refused. " +
+    "It runs in the background: follow it with video_get_recording_work. Only one save or check runs at a time. Check the plan and agree the cuts with Caleb first.",
+  {
+    ...recordingEdit,
+    name: z.string().min(1).max(120).describe("The new file's name: letters, numbers, spaces, dots, dashes and brackets"),
+    format: z.enum(["mov", "mp4"]).optional().describe("File type, mov by default"),
+    quality: z.enum(["high", "balanced", "small"]).optional().describe("Only for compress"),
+  },
+  async (input) => (await studio("POST", "/api/recordings/save", input)).work
+);
+
+export const videoMeasureRecordingSyncTool = tool(
+  "video_measure_recording_sync",
+  "Measure a recording's audio delay",
+  "Follows the lips of whoever is on screen and compares them with the sound, to measure how far the picture is behind it. It runs in the background and takes some minutes: " +
+    "follow it with video_get_recording_work. A positive result means use that many milliseconds as syncMs. Trust it only when suggestedMs is given; otherwise ask Caleb to judge by eye.",
+  { files: z.array(recordingFile).min(1).max(20) },
+  async ({ files }) => (await studio("POST", "/api/recordings/measure", { files })).work
+);
+
+export const videoGetRecordingWorkTool = tool(
+  "video_get_recording_work",
+  "Get recording work status",
+  "The progress and result of a save or a lip sync check. Without an id, the recent ones.",
+  { workId: workId.optional() },
+  async ({ workId }) => (workId ? (await studio("GET", `/api/recordings/work/${workId}`)).work : (await studio("GET", "/api/recordings/work")).work)
+);
+
+export const videoCancelRecordingWorkTool = tool(
+  "video_cancel_recording_work",
+  "Cancel recording work you asked for",
+  "Stops a save or check you asked for; a cancelled save leaves no file. Work Caleb started is refused.",
+  { workId },
+  async ({ workId }) => (await studio("POST", `/api/recordings/work/${workId}/cancel`, {})).work
+);
+
 export const videoStudioTools = [
   videoListProjectsTool,
   videoGetProjectTool,
@@ -370,4 +443,10 @@ export const videoStudioTools = [
   videoReorderQueueTool,
   videoListOutputsTool,
   videoGetReviewCommentsTool,
+  videoListRecordingsTool,
+  videoPlanRecordingEditTool,
+  videoSaveRecordingTool,
+  videoMeasureRecordingSyncTool,
+  videoGetRecordingWorkTool,
+  videoCancelRecordingWorkTool,
 ];
