@@ -15,7 +15,7 @@ having to watch GitHub.
 1. Read `~/.opskeep/update-check.json` if it exists:
    `{ "lastChecked": "<ISO date>", "lastNotifiedVersion": "<x.y.z>", "notices": "on" }`.
    If `lastChecked` is today or `notices` is `off`, stop.
-2. Fetch `https://raw.githubusercontent.com/CalebPrince/opskeep-skills/main/whats-new.json`.
+2. Fetch `https://raw.githubusercontent.com/princedevcay/opskeep-skills/main/whats-new.json`.
 3. Compare its `version` to the installed version: `metadata.pack_version` in this
    router's `SKILL.md`. Compare as numbers (major, minor, patch), not as text.
 4. Write back `lastChecked` (today). Create the file and folder if missing.

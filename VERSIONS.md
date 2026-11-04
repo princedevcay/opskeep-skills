@@ -39,10 +39,10 @@ as a whole (see `package.json`).
   contained ": ", so installers' YAML parser rejected the header and skipped the skill
   (installs got 20 of 21 core skills). `npm run lint:skills` now fails on unquoted
   top-level frontmatter values YAML can't parse.
-- Fixed the documented update command. `npx skills update CalebPrince/opskeep-skills`
+- Fixed the documented update command. `npx skills update princedevcay/opskeep-skills`
   never worked (`update` takes skill names, and only refreshes skills it already tracks,
   so it never adds new ones). README and `whats-new.json` now use the install command
-  again (`npx skills add CalebPrince/opskeep-skills -y`, `-g` for a user-level install),
+  again (`npx skills add princedevcay/opskeep-skills -y`, `-g` for a user-level install),
   which refreshes every skill and adds new ones. The update check picks the right scope
   and asks before overwriting an installed skill that is newer or was edited by hand.
 

@@ -2,14 +2,14 @@
 
 ![Opskeep — operations skills for the agent you already use](.github/banner.webp)
 
-[![MIT License](https://img.shields.io/github/license/CalebPrince/opskeep-skills?color=FF5A36)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/CalebPrince/opskeep-skills?color=FF5A36)](https://github.com/CalebPrince/opskeep-skills/stargazers)
+[![MIT License](https://img.shields.io/github/license/princedevcay/opskeep-skills?color=FF5A36)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/princedevcay/opskeep-skills?color=FF5A36)](https://github.com/princedevcay/opskeep-skills/stargazers)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20standard-FF5A36)](https://agentskills.io)
 [![Live Demo](https://img.shields.io/badge/Live-opskeep--skills.vercel.app-FF5A36)](https://opskeep-skills.vercel.app/)
-![GitHub forks](https://img.shields.io/github/forks/CalebPrince/opskeep-skills?color=FF5A36)
-![Last commit](https://img.shields.io/github/last-commit/CalebPrince/opskeep-skills?color=FF5A36)
-![Repo size](https://img.shields.io/github/repo-size/CalebPrince/opskeep-skills?color=FF5A36)
-![Issues](https://img.shields.io/github/issues/CalebPrince/opskeep-skills?color=FF5A36)
+![GitHub forks](https://img.shields.io/github/forks/princedevcay/opskeep-skills?color=FF5A36)
+![Last commit](https://img.shields.io/github/last-commit/princedevcay/opskeep-skills?color=FF5A36)
+![Repo size](https://img.shields.io/github/repo-size/princedevcay/opskeep-skills?color=FF5A36)
+![Issues](https://img.shields.io/github/issues/princedevcay/opskeep-skills?color=FF5A36)
 
 **Operations skills for the agent you already use.**
 
@@ -28,14 +28,14 @@ Independent, open-source project.
 
 ```bash
 # Install the full skill pack
-npx skills add CalebPrince/opskeep-skills
+npx skills add princedevcay/opskeep-skills
 
 # Or install a single skill — swap in any skill name from the tables below,
 # e.g. opskeep-get-work, opskeep-elliot-design, opskeep-elliot-review (lite)
-npx skills add CalebPrince/opskeep-skills --skill opskeep
+npx skills add princedevcay/opskeep-skills --skill opskeep
 
 # List every available skill
-npx skills add CalebPrince/opskeep-skills --list
+npx skills add princedevcay/opskeep-skills --list
 ```
 
 To update later, run the same install again. It replaces the installed skills with the
@@ -44,10 +44,10 @@ tracks, so it never picks up a new one):
 
 ```bash
 # Project install
-npx skills add CalebPrince/opskeep-skills -y
+npx skills add princedevcay/opskeep-skills -y
 
 # Installed for your user (in ~/.agents/skills or ~/.claude/skills)
-npx skills add CalebPrince/opskeep-skills -g -y
+npx skills add princedevcay/opskeep-skills -g -y
 ```
 
 If you copied the skills in by hand, `npx skills` lists them as `Source: local` and can't
@@ -63,7 +63,7 @@ tells the user in plain words what changed and offers to install it for them. Sa
 ### Clone instead
 
 ```bash
-git clone https://github.com/CalebPrince/opskeep-skills.git
+git clone https://github.com/princedevcay/opskeep-skills.git
 
 # All skills
 cp -r opskeep-skills/skills/* .agents/skills/
@@ -102,7 +102,7 @@ tracking time and expenses, escalating to the owner, and so on. Installing the s
 gives an agent the judgment; connecting the MCP server gives it the tools to act on it.
 
 ```bash
-git clone https://github.com/CalebPrince/opskeep-skills.git
+git clone https://github.com/princedevcay/opskeep-skills.git
 cd opskeep-skills/mcp-server
 npm install
 npm start

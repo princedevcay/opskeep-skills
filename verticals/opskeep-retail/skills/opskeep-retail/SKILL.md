@@ -135,7 +135,7 @@ Once a day, after answering (never before), check for a newer version:
 
 1. Skip if `~/.opskeep/update-check.json` shows `lastChecked` is today or `notices` is
    `off`, or there's no web access.
-2. Fetch `https://raw.githubusercontent.com/CalebPrince/opskeep-skills/main/whats-new.json`
+2. Fetch `https://raw.githubusercontent.com/princedevcay/opskeep-skills/main/whats-new.json`
    and compare its `version` (as numbers) to `metadata.pack_version` above. Save today
    as `lastChecked`.
 3. Newer and not yet announced (`lastNotifiedVersion`): end the reply with

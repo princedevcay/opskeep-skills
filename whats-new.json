@@ -9,8 +9,8 @@
   ],
   "packs": {
     "core": {
-      "update": "npx skills add CalebPrince/opskeep-skills -y",
-      "update_global": "npx skills add CalebPrince/opskeep-skills -g -y"
+      "update": "npx skills add princedevcay/opskeep-skills -y",
+      "update_global": "npx skills add princedevcay/opskeep-skills -g -y"
     },
     "verticals": {
       "update": "git -C <clone folder> pull, then copy verticals/<pack>/skills/* into the agent's skills folder again",

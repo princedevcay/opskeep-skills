@@ -15,11 +15,11 @@ client-work loop gets its own pack and which core skills it reuses.
 
 ```bash
 # Accounting pack
-git clone https://github.com/CalebPrince/opskeep-skills.git
+git clone https://github.com/princedevcay/opskeep-skills.git
 cp -r opskeep-skills/verticals/opskeep-accounting/skills/* .agents/skills/
 
 # Plus the core skills it reuses (practice billing, client care, SOPs, time and expenses)
-npx skills add CalebPrince/opskeep-skills
+npx skills add princedevcay/opskeep-skills
 ```
 
 The core pack is needed alongside this one: the practice's own fees, WIP, retainers and
