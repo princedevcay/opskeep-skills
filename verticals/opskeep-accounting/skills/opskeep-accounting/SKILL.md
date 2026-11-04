@@ -52,7 +52,7 @@ actions, and `TBD` for unknowns.
 2. Work on a client's books or compliance -> an accounting lane. Work on the practice's own
    money, clients or processes -> the core lane named in the matrix.
 3. Core lanes are a separate install (the core Opskeep pack). If one isn't installed,
-   say so and give `npx skills add CalebPrince/opskeep-skills`; don't improvise its
+   say so and give `npx skills add princedevcay/opskeep-skills`; don't improvise its
    output.
 4. Live ledger, bank-feed or practice-management reads/writes go through
    `opskeep-tools`/`composio-mcp`. Never guess connector slugs.
@@ -114,7 +114,7 @@ Once a day, after answering (never before), check for a newer version:
 
 1. Skip if `~/.opskeep/update-check.json` shows `lastChecked` is today or `notices` is
    `off`, or there's no web access.
-2. Fetch `https://raw.githubusercontent.com/CalebPrince/opskeep-skills/main/whats-new.json`
+2. Fetch `https://raw.githubusercontent.com/princedevcay/opskeep-skills/main/whats-new.json`
    and compare its `version` (as numbers) to `metadata.pack_version` above. Save today
    as `lastChecked`.
 3. Newer and not yet announced (`lastNotifiedVersion`): end the reply with

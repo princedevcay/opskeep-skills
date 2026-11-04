@@ -13,7 +13,7 @@ project-based lanes.
 ## Install
 
 ```bash
-git clone https://github.com/CalebPrince/opskeep-skills.git
+git clone https://github.com/princedevcay/opskeep-skills.git
 cp -r opskeep-skills/verticals/opskeep-retail/skills/* .agents/skills/
 ```
 

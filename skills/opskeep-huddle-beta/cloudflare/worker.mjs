@@ -425,7 +425,7 @@ function indexHtml() {
       <p>Paste this into your OpenCode agent:</p>
       <code class="command">Install the Opskeep Huddle Beta skill with:
 
-npx skills add CalebPrince/opskeep-skills --skill opskeep-huddle-beta
+npx skills add princedevcay/opskeep-skills --skill opskeep-huddle-beta
 
 Then follow the instructions in skills/opskeep-huddle-beta/SKILL.md to start a hosted huddle.</code>
       <ol>

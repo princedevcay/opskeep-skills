@@ -13,7 +13,7 @@ Sibling pack to the core Opskeep pack and to
 ## Install
 
 ```bash
-git clone https://github.com/CalebPrince/opskeep-skills.git
+git clone https://github.com/princedevcay/opskeep-skills.git
 cp -r opskeep-skills/verticals/opskeep-hospitality/skills/* .agents/skills/
 ```
 
